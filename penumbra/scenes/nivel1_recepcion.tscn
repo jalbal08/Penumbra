@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bwtnn2wk75ine"]
+
+[ext_resource type="Script" uid="uid://56yxv2xqpcl8" path="res://scenes/player.gd" id="1_myl1j"]
+[ext_resource type="Script" uid="uid://daopgqburerjj" path="res://scripts/control.gd" id="2_c8sko"]
+[ext_resource type="Script" uid="uid://qvu7m84pd8r3" path="res://scripts/interactuable.gd" id="3_akuw8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvnu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smhyf"]
+size = Vector3(1.5, 2, 1.5)
+
+[node name="Nivel1Recepcion" type="Node3D" unique_id=1548546271]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=397154569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.037)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=844323013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=862737931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+use_collision = true
+size = Vector3(10, 3, 0.2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1662826066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0)
+use_collision = true
+size = Vector3(0.2, 3, 10)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=884932238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 0)
+use_collision = true
+size = Vector3(0.2, 3, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909118104]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+light_energy = 0.15
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=471157872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_myl1j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1893146968]
+shape = SubResource("CapsuleShape3D_xvnu6")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=584051361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Linterna" type="SpotLight3D" parent="Player/Camera3D" unique_id=742794129]
+visible = false
+light_color = Color(1.0320734, 1.0320734, 1.0320734, 1)
+light_energy = 6.0
+spot_range = 15.0
+spot_angle = 35.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=582108225]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=565527863]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_c8sko")
+
+[node name="PromptLabel" type="Label" parent="CanvasLayer/Control" unique_id=1942814154]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 580.0
+offset_right = 750.0
+offset_bottom = 620.0
+text = "Presiona E"
+
+[node name="NotaLabel" type="Label" parent="CanvasLayer/Control" unique_id=1956862524]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 250.0
+offset_right = 850.0
+offset_bottom = 450.0
+autowrap_mode = 2
+
+[node name="Interactuable_Escritorio" type="Area3D" parent="." unique_id=1331223413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3)
+script = ExtResource("3_akuw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Escritorio" unique_id=1899609440]
+shape = SubResource("BoxShape3D_smhyf")
