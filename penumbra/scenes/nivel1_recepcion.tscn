@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://bwtnn2wk75ine"]
 
+[ext_resource type="Script" uid="uid://cgm0ywssbxlt4" path="res://scripts/puerta_sotano.gd" id="1_hs1xt"]
 [ext_resource type="Script" uid="uid://56yxv2xqpcl8" path="res://scenes/player.gd" id="1_myl1j"]
 [ext_resource type="Script" uid="uid://daopgqburerjj" path="res://scripts/control.gd" id="2_c8sko"]
 [ext_resource type="Script" uid="uid://qvu7m84pd8r3" path="res://scripts/interactuable.gd" id="3_akuw8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0in4i"]
+size = Vector3(1.5, 2.5, 1.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvnu6"]
 
@@ -35,6 +39,18 @@ size = Vector3(0.2, 3, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 0)
 use_collision = true
 size = Vector3(0.2, 3, 10)
+
+[node name="Puerta_Sotano_Visual" type="CSGBox3D" parent="." unique_id=330794148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -4.9)
+use_collision = true
+size = Vector3(1.2, 2.2, 0.3)
+
+[node name="Area3D" type="Area3D" parent="Puerta_Sotano_Visual" unique_id=898851154 node_paths=PackedStringArray("puerta_visual")]
+script = ExtResource("1_hs1xt")
+puerta_visual = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta_Sotano_Visual/Area3D" unique_id=1130610805]
+shape = SubResource("BoxShape3D_0in4i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909118104]
 transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
@@ -90,4 +106,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3)
 script = ExtResource("3_akuw8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Escritorio" unique_id=1899609440]
+shape = SubResource("BoxShape3D_smhyf")
+
+[node name="Interactuable_Archivador" type="Area3D" parent="." unique_id=1495168767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -2)
+script = ExtResource("3_akuw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Archivador" unique_id=2117777557]
 shape = SubResource("BoxShape3D_smhyf")
