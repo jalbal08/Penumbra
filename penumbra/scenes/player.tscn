@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b04kxyduir331"]
+
+[ext_resource type="Script" uid="uid://56yxv2xqpcl8" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvnu6"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1552797537]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1546026533]
+shape = SubResource("CapsuleShape3D_xvnu6")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=924034945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Linterna" type="SpotLight3D" parent="Camera3D" unique_id=1995251494]
+visible = false
+light_color = Color(1.0320734, 1.0320734, 1.0320734, 1)
+light_energy = 6.0
+spot_range = 15.0
+spot_angle = 35.0

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dlyrwosvchex5"]
+
+[ext_resource type="Script" uid="uid://daopgqburerjj" path="res://scripts/control.gd" id="1_4ahuj"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1388581311]
+
+[node name="Control" type="Control" parent="." unique_id=1893315573]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4ahuj")
+
+[node name="PromptLabel" type="Label" parent="Control" unique_id=1749149271]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 580.0
+offset_right = 750.0
+offset_bottom = 620.0
+text = "Presiona E"
+
+[node name="NotaLabel" type="Label" parent="Control" unique_id=39465261]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 250.0
+offset_right = 850.0
+offset_bottom = 450.0
+autowrap_mode = 2
