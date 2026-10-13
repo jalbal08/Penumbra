@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
-const VEL_PATRULLA = 1.5
-const VEL_PERSECUCION = 2.6
-const DISTANCIA_ATRAPAR = 1.3
-const DETECCION_NORMAL = 4.0
-const DETECCION_CON_LINTERNA = 8.0
-const DISTANCIA_PERDER = 12.0
+@export var VEL_PATRULLA = 1.5
+@export var VEL_PERSECUCION = 2.6
+@export var DISTANCIA_ATRAPAR = 1.3
+@export var DETECCION_NORMAL = 4.0
+@export var DETECCION_CON_LINTERNA = 8.0
+@export var DISTANCIA_PERDER = 12.0
+@export var punto_inicial: int = 0
 
 const COLOR_PATRULLA = Color(0.35, 0.02, 0.02)
 const COLOR_PERSECUCION = Color(1.0, 0.1, 0.1)
@@ -26,7 +27,7 @@ var linterna: Node3D
 var material: StandardMaterial3D
 
 func _ready():
-	print("Enemigo listo")
+	punto_actual = punto_inicial
 	jugador = get_parent().get_node("Player")
 	linterna = jugador.get_node("Camera3D/Linterna")
 	material = StandardMaterial3D.new()
@@ -44,11 +45,9 @@ func _physics_process(delta):
 	if not persiguiendo and dist < rango:
 		persiguiendo = true
 		material.albedo_color = COLOR_PERSECUCION
-		print("Enemigo: te detectó")
 	elif persiguiendo and dist > DISTANCIA_PERDER:
 		persiguiendo = false
 		material.albedo_color = COLOR_PATRULLA
-		print("Enemigo: te perdió")
 
 	# Atrapar
 	if persiguiendo and dist < DISTANCIA_ATRAPAR:

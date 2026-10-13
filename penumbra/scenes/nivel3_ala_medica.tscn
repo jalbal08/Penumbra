@@ -1,29 +1,8 @@
 [gd_scene format=3 uid="uid://cbtln8vnh38qv"]
 
 [ext_resource type="PackedScene" uid="uid://b04kxyduir331" path="res://scenes/player.tscn" id="1_n887m"]
-[ext_resource type="Script" uid="uid://egnx285lr1j" path="res://scripts/fusible.gd" id="2_8ofdn"]
 [ext_resource type="PackedScene" uid="uid://dlyrwosvchex5" path="res://scenes/ui_interaccion.tscn" id="3_tpw85"]
-[ext_resource type="Script" uid="uid://dm4ihfhch15ki" path="res://scripts/generador.gd" id="4_yoa70"]
-[ext_resource type="Script" uid="uid://cinju10vpfvel" path="res://scripts/caja_fuerte.gd" id="5_1e035"]
 [ext_resource type="Script" uid="uid://dy2u6jkttenx8" path="res://scripts/enemigo.gd" id="6_0fdxk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_smhyf"]
-size = Vector3(0.8, 0.8, 0.8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smhyf"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvnu6"]
-size = Vector3(3, 2.5, 3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4recf"]
-albedo_color = Color(0.45223168, 0.45223168, 0.45223168, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0in4i"]
-size = Vector3(2.5, 2.5, 2.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvny2"]
-albedo_color = Color(0.8792148, 0.8792148, 0.8792148, 0.9254902)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4recf"]
 size = Vector3(0.8, 1.8, 0.8)
@@ -64,72 +43,31 @@ size = Vector3(0.2, 3, 12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -30, 0)
 light_energy = 0.08
 
-[node name="Interactuable_Fusible1" type="Area3D" parent="." unique_id=2019089550]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -4)
-script = ExtResource("2_8ofdn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Fusible1" unique_id=82081259]
-shape = SubResource("BoxShape3D_smhyf")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Interactuable_Fusible1" unique_id=972434635]
-size = Vector3(0.3, 0.3, 0.3)
-material = SubResource("StandardMaterial3D_smhyf")
-
-[node name="Interactuable_Fusible3" type="Area3D" parent="." unique_id=1871992666]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 3)
-script = ExtResource("2_8ofdn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Fusible3" unique_id=1502297768]
-shape = SubResource("BoxShape3D_smhyf")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Interactuable_Fusible3" unique_id=659541006]
-size = Vector3(0.3, 0.3, 0.3)
-material = SubResource("StandardMaterial3D_smhyf")
-
-[node name="Interactuable_Fusible2" type="Area3D" parent="." unique_id=1278468044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
-script = ExtResource("2_8ofdn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Fusible2" unique_id=2065876338]
-shape = SubResource("BoxShape3D_smhyf")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Interactuable_Fusible2" unique_id=1033626013]
-size = Vector3(0.3, 0.3, 0.3)
-material = SubResource("StandardMaterial3D_smhyf")
-
 [node name="CanvasLayer" parent="." unique_id=1388581311 instance=ExtResource("3_tpw85")]
-
-[node name="Interactuable_Generador" type="Area3D" parent="." unique_id=1906880559 node_paths=PackedStringArray("luz")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -5)
-script = ExtResource("4_yoa70")
-luz = NodePath("../DirectionalLight3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Generador" unique_id=2144163413]
-shape = SubResource("BoxShape3D_xvnu6")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Interactuable_Generador" unique_id=1130661648]
-use_collision = true
-size = Vector3(1.2, 1.5, 1)
-material = SubResource("StandardMaterial3D_4recf")
-
-[node name="Interactuable_CajaFuerte" type="Area3D" parent="." unique_id=345622415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.55, -5)
-script = ExtResource("5_1e035")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_CajaFuerte" unique_id=1574895818]
-shape = SubResource("BoxShape3D_0in4i")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Interactuable_CajaFuerte" unique_id=1885529472]
-use_collision = true
-size = Vector3(0.9, 0.9, 0.7)
-material = SubResource("StandardMaterial3D_kvny2")
 
 [node name="Enemigo" type="CharacterBody3D" parent="." unique_id=1493092041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
 script = ExtResource("6_0fdxk")
+VEL_PERSECUCION = 3.0
+DETECCION_NORMAL = 5.5
+DETECCION_CON_LINTERNA = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemigo" unique_id=1690682211]
 shape = SubResource("BoxShape3D_4recf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Enemigo" unique_id=868725504]
+material = SubResource("StandardMaterial3D_8joqa")
+
+[node name="Enemigo2" type="CharacterBody3D" parent="." unique_id=242107181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 3)
+script = ExtResource("6_0fdxk")
+VEL_PERSECUCION = 3.0
+DETECCION_NORMAL = 5.5
+DETECCION_CON_LINTERNA = 10.0
+punto_inicial = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemigo2" unique_id=1774934431]
+shape = SubResource("BoxShape3D_4recf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Enemigo2" unique_id=1861280695]
 material = SubResource("StandardMaterial3D_8joqa")
