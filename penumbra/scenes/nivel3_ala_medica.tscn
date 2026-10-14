@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b04kxyduir331" path="res://scenes/player.tscn" id="1_n887m"]
 [ext_resource type="PackedScene" uid="uid://dlyrwosvchex5" path="res://scenes/ui_interaccion.tscn" id="3_tpw85"]
+[ext_resource type="Script" uid="uid://bfuocp3odl17u" path="res://scripts/palanca_interactuable.gd" id="4_xidb6"]
+[ext_resource type="Script" uid="uid://cfgwbi6n7um3e" path="res://scripts/panel_ala_medica.gd" id="4_y7rjp"]
 [ext_resource type="Script" uid="uid://dy2u6jkttenx8" path="res://scripts/enemigo.gd" id="6_0fdxk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4recf"]
@@ -9,6 +11,9 @@ size = Vector3(0.8, 1.8, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8joqa"]
 albedo_color = Color(0.61787176, 0.092630275, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smhyf"]
+size = Vector3(0.3, 0.4, 0.2)
 
 [node name="Nivel3AlaMedica" type="Node3D" unique_id=1118090114]
 
@@ -48,9 +53,11 @@ light_energy = 0.08
 [node name="Enemigo" type="CharacterBody3D" parent="." unique_id=1493092041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
 script = ExtResource("6_0fdxk")
-VEL_PERSECUCION = 3.0
-DETECCION_NORMAL = 5.5
-DETECCION_CON_LINTERNA = 10.0
+VEL_PERSECUCION = 2.7
+DETECCION_NORMAL = 1.5
+DETECCION_CON_LINTERNA = 5.0
+ANGULO_VISION = 70.0
+TIEMPO_DETECCION = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemigo" unique_id=1690682211]
 shape = SubResource("BoxShape3D_4recf")
@@ -71,3 +78,53 @@ shape = SubResource("BoxShape3D_4recf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Enemigo2" unique_id=1861280695]
 material = SubResource("StandardMaterial3D_8joqa")
+
+[node name="PanelControl" type="Node3D" parent="." unique_id=1569200113]
+script = ExtResource("4_y7rjp")
+
+[node name="Pantalla" type="CSGBox3D" parent="PanelControl" unique_id=966883736]
+size = Vector3(1, 0.5, 0.1)
+
+[node name="Label3D" type="Label3D" parent="PanelControl/Pantalla" unique_id=1723305282]
+text = "--"
+font_size = 48
+
+[node name="Palanca1" type="Area3D" parent="PanelControl" unique_id=531487638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.4, 0)
+script = ExtResource("4_xidb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelControl/Palanca1" unique_id=104643222]
+shape = SubResource("BoxShape3D_smhyf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PanelControl/Palanca1" unique_id=1878434681]
+size = Vector3(0.2, 0.3, 0.1)
+
+[node name="Palanca2" type="Area3D" parent="PanelControl" unique_id=762337179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.4, 0)
+script = ExtResource("4_xidb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelControl/Palanca2" unique_id=185046242]
+shape = SubResource("BoxShape3D_smhyf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PanelControl/Palanca2" unique_id=2121068565]
+size = Vector3(0.2, 0.3, 0.1)
+
+[node name="Palanca3" type="Area3D" parent="PanelControl" unique_id=1521305350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.4, 0)
+script = ExtResource("4_xidb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PanelControl/Palanca3" unique_id=693795433]
+shape = SubResource("BoxShape3D_smhyf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PanelControl/Palanca3" unique_id=1022007884]
+size = Vector3(0.2, 0.3, 0.1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1921726990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -4)
+use_collision = true
+size = Vector3(4, 3, 0.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=850165627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 5)
+use_collision = true
+size = Vector3(4, 3, 0.3)
