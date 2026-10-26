@@ -18,7 +18,7 @@ func _on_body_exited(body):
 		get_tree().call_group("ui_interaccion", "ocultar_prompt")
 
 func _process(_delta):
-	if jugador_cerca and not ya_recogido and Input.is_action_just_pressed("interactuar"):
+	if jugador_cerca and not ya_recogido and not Inventario.ui_bloqueada and Input.is_action_just_pressed("interactuar"):
 		ya_recogido = true
 		Inventario.fusibles_encontrados += 1
 		get_tree().call_group("ui_interaccion", "mostrar_nota", "Fusible recogido (" + str(Inventario.fusibles_encontrados) + "/3)")

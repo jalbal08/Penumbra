@@ -1,6 +1,7 @@
 extends Node3D
 
-const SECUENCIA = [1, 2, 3]
+# Orden correcto: 2 (azul), 1 (roja), 3 (verde). La pista esta en la nota del medico.
+const SECUENCIA = [2, 1, 3]
 var progreso = 0
 var resuelto = false
 
@@ -18,7 +19,8 @@ func palanca_presionada(numero):
 		if progreso == SECUENCIA.size():
 			resuelto = true
 			texto.text = "92"
-			get_tree().call_group("ui_interaccion", "mostrar_nota", "El panel se desbloquea.\n\nÚltimos dígitos del código: - - 9 2")
+			Inventario.codigo_parte2 = "92"
+			get_tree().call_group("ui_interaccion", "mostrar_nota", "El panel se desbloquea.\n\nÚltimos dígitos del código: - - 9 2\n\nSe escucha un clic: la puerta de salida se desbloqueó.")
 	else:
 		progreso = 0
 		texto.text = "ERR"

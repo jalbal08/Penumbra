@@ -3,7 +3,6 @@ extends CharacterBody3D
 const SPEED = 3.0
 const RUN_SPEED = 5.5
 const JUMP_VELOCITY = 4.5
-const MOUSE_SENSITIVITY = 0.003
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -14,9 +13,14 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+	if Inventario.ui_bloqueada:
+		return
+	if event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		return
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		rotate_y(-event.relative.x * Ajustes.sensibilidad)
+		camera.rotate_x(-event.relative.y * Ajustes.sensibilidad)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -27,11 +31,13 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	var input_dir = Input.get_vector("mover_izquierda", "mover_derecha", "mover_adelante", "mover_atras")
+	var input_dir = Vector2.ZERO
+	if not Inventario.ui_bloqueada:
+		input_dir = Input.get_vector("mover_izquierda", "mover_derecha", "mover_adelante", "mover_atras")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	var current_speed = SPEED
-	if Input.is_action_pressed("correr"):
+	if Input.is_action_pressed("correr") and not Inventario.ui_bloqueada:
 		current_speed = RUN_SPEED
 		
 

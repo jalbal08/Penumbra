@@ -21,8 +21,9 @@ func _on_body_exited(body):
 		get_tree().call_group("ui_interaccion", "ocultar_prompt")
 
 func _process(_delta):
-	if jugador_cerca and not abierta and Inventario.generador_encendido and Input.is_action_just_pressed("interactuar"):
+	if jugador_cerca and not abierta and Inventario.generador_encendido and not Inventario.ui_bloqueada and Input.is_action_just_pressed("interactuar"):
 		abierta = true
 		Inventario.tiene_llave_ala_medica = true
+		Inventario.codigo_parte1 = "48"
 		get_tree().call_group("ui_interaccion", "mostrar_nota", "La caja fuerte se abre.\n\nPrimeros dígitos del código: 4 8 - -\n\nTambién encuentras la llave del ala médica.")
 		get_tree().call_group("ui_interaccion", "ocultar_prompt")

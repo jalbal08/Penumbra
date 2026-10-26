@@ -20,5 +20,5 @@ func _on_body_exited(body):
 		get_tree().call_group("ui_interaccion", "ocultar_prompt")
 
 func _process(_delta):
-	if jugador_cerca and Input.is_action_just_pressed("interactuar"):
+	if jugador_cerca and not Inventario.ui_bloqueada and Input.is_action_just_pressed("interactuar"):
 		get_parent().palanca_presionada(numero)
