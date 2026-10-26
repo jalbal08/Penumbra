@@ -1,0 +1,42 @@
+PENUMBRA: PASILLOS SIN SALIDA - GUIA RAPIDA DE JUEGO
+
+CONTROLES
+W A S D ......... moverte
+Shift ........... correr
+Mouse ........... mirar
+E ............... interactuar (puertas, notas, objetos, casilleros)
+F ............... linterna
+Esc ............. liberar el mouse (clic para volver a capturarlo)
+
+ARRIBA A LA IZQUIERDA siempre dice el OBJETIVO y el CODIGO que llevas.
+Si te pierdes, lee ahi que sigue.
+
+NIVEL 1 - LA RECEPCION
+1. Lee la nota del escritorio (E).
+2. Toma la llave del sotano en el archivador (E).
+3. Abre la puerta de madera del fondo (E) y baja.
+
+NIVEL 2 - EL SOTANO (sin luz: usa la linterna con F)
+1. Busca los 3 fusibles (uno en cada cuarto de las esquinas: calderas, almacen y lavanderia).
+2. Ve al cuarto del generador (centro-arriba) y presiona E. Se prenden las luces.
+3. Abre la caja fuerte (cuarto de arriba a la derecha): salen los digitos 4 8 y la llave del ala medica.
+4. Camina al extremo derecho del pasillo y abre la puerta del ala medica.
+- La entidad patrulla el pasillo. Si se pone naranja te esta notando: corre y dobla una esquina.
+
+NIVEL 3 - EL ALA MEDICA (la entidad aparece por visitas)
+1. Lee la nota del medico en la farmacia (cuarto de abajo a la izquierda). Dice el orden de las palancas: AZUL, ROJA, VERDE.
+2. Al leerla EMPIEZAN LAS VISITAS de la entidad:
+   - Primero hay un aviso: rugido, luces que parpadean, un mensaje y latidos lentos.
+   - Despues la entidad aparece en un extremo del pasillo y recorre su ruta.
+   - Si no te ve, llega al final y desaparece. Luego descansa unos segundos y vuelve a avisar.
+3. COMO SOBREVIVIR:
+   - Cuando oigas el aviso, escondete en un CASILLERO (hay 6) o salte del pasillo a un cuarto.
+   - En el casillero presiona E para entrar y E para salir. Adentro la entidad no te ve.
+   - No puedes esconderte si ya te esta persiguiendo.
+   - Si te persigue: corre con Shift y rompe su linea de vision (dobla una esquina).
+   - Si te alcanza sale el susto y el nivel se reinicia (las visitas regresan solas).
+4. Resuelve el panel de la sala de control (arriba a la derecha): palancas azul, roja, verde. Sale 92.
+5. Se desbloquea la puerta del extremo izquierdo del pasillo. Salte por ahi.
+
+FINAL (de vuelta en la recepcion)
+Ve a la puerta metalica (E), escribe el codigo 4892 y dale OK.
