@@ -31,6 +31,11 @@ size = Vector3(0.8, 1.8, 0.8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8joqa"]
 albedo_color = Color(0.61787176, 0.092630275, 0, 1)
 
+[sub_resource type="Environment" id="Environment_xvnu6"]
+background_mode = 1
+fog_enabled = true
+fog_density = 0.08
+
 [node name="Nivel2Sotano" type="Node3D" unique_id=1118090114]
 
 [node name="Player" parent="." unique_id=1552797537 instance=ExtResource("1_sw2x1")]
@@ -133,3 +138,6 @@ shape = SubResource("BoxShape3D_4recf")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Enemigo" unique_id=868725504]
 material = SubResource("StandardMaterial3D_8joqa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=36547196]
+environment = SubResource("Environment_xvnu6")
