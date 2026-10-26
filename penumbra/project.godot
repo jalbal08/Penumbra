@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Penumbra"
-run/main_scene="uid://bwtnn2wk75ine"
+run/main_scene="res://scenes/menu_principal.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Ajustes="*res://scripts/ajustes.gd"
 Inventario="*uid://dlnf3wmaakc3q"
+Transicion="*res://scripts/transicion.gd"
+Susto="*res://scripts/susto.gd"
 
 [display]
 
