@@ -1,74 +1,817 @@
 [gd_scene format=3 uid="uid://bwtnn2wk75ine"]
 
-[ext_resource type="Script" uid="uid://cgm0ywssbxlt4" path="res://scripts/puerta_sotano.gd" id="1_hs1xt"]
-[ext_resource type="PackedScene" uid="uid://b04kxyduir331" path="res://scenes/player.tscn" id="2_hs1xt"]
-[ext_resource type="Script" uid="uid://qvu7m84pd8r3" path="res://scripts/interactuable.gd" id="3_akuw8"]
-[ext_resource type="PackedScene" uid="uid://dlyrwosvchex5" path="res://scenes/ui_interaccion.tscn" id="3_hs1xt"]
+[ext_resource type="Script" path="res://scripts/nivel.gd" id="e1"]
+[ext_resource type="Material" path="res://assets/materiales/piso_madera.tres" id="e2"]
+[ext_resource type="Material" path="res://assets/materiales/techo.tres" id="e3"]
+[ext_resource type="Material" path="res://assets/materiales/pared_papel.tres" id="e4"]
+[ext_resource type="Material" path="res://assets/materiales/concreto.tres" id="e5"]
+[ext_resource type="Material" path="res://assets/materiales/madera.tres" id="e6"]
+[ext_resource type="Material" path="res://assets/materiales/maquina.tres" id="e7"]
+[ext_resource type="Material" path="res://assets/materiales/metal.tres" id="e8"]
+[ext_resource type="Material" path="res://assets/materiales/tela.tres" id="e9"]
+[ext_resource type="Material" path="res://assets/materiales/caja.tres" id="e10"]
+[ext_resource type="Script" path="res://scripts/luz_parpadeo.gd" id="e11"]
+[ext_resource type="Script" path="res://scripts/puerta_sotano.gd" id="e12"]
+[ext_resource type="Script" path="res://scripts/puerta_salida.gd" id="e13"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="e14"]
+[ext_resource type="PackedScene" path="res://scenes/ui_interaccion.tscn" id="e15"]
+[ext_resource type="Script" path="res://scripts/interactuable.gd" id="e16"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0in4i"]
-size = Vector3(1.5, 2.5, 1.5)
+[sub_resource type="Environment" id="s1"]
+background_mode = 1
+background_color = Color(0, 0, 0, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.42, 0.3, 1)
+ambient_light_energy = 0.5
+fog_enabled = true
+fog_light_color = Color(0.12, 0.09, 0.07, 1)
+fog_density = 0.02
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_smhyf"]
-size = Vector3(1.5, 2, 1.5)
+[sub_resource type="StandardMaterial3D" id="s2"]
+albedo_color = Color(0.25, 0.2, 0.15, 1)
+roughness = 1.0
 
-[node name="Nivel1Recepcion" type="Node3D" unique_id=1548546271]
+[sub_resource type="StandardMaterial3D" id="s3"]
+albedo_color = Color(0.33, 0.2, 0.2, 1)
+roughness = 1.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=397154569]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.037)
+[sub_resource type="StandardMaterial3D" id="s4"]
+albedo_color = Color(0.41, 0.2, 0.25, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s5"]
+albedo_color = Color(0.25, 0.2, 0.3, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s6"]
+albedo_color = Color(0.33, 0.2, 0.15, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s7"]
+albedo_color = Color(0.41, 0.2, 0.2, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s8"]
+albedo_color = Color(0.25, 0.2, 0.25, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s9"]
+albedo_color = Color(0.33, 0.2, 0.3, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s10"]
+albedo_color = Color(0.22, 0.24, 0.26, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s11"]
+albedo_color = Color(0.85, 0.82, 0.7, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s12"]
+albedo_color = Color(0.95, 0.85, 0.55, 1)
+roughness = 1.0
+emission_enabled = true
+emission = Color(1, 0.8, 0.4, 1)
+emission_energy_multiplier = 1.4
+
+[sub_resource type="StandardMaterial3D" id="s13"]
+albedo_color = Color(0.6, 0.55, 0.3, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s14"]
+albedo_color = Color(0.1, 0.3, 0.12, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s15"]
+albedo_color = Color(0.12, 0.09, 0.06, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s16"]
+albedo_color = Color(0.25, 0.3, 0.35, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s17"]
+albedo_color = Color(0.4, 0.28, 0.2, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s18"]
+albedo_color = Color(0.2, 0.25, 0.22, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="s19"]
+albedo_color = Color(0.3, 0.22, 0.25, 1)
+roughness = 1.0
+
+[sub_resource type="BoxShape3D" id="s20"]
+size = Vector3(2.4, 2.4, 2.6)
+
+[sub_resource type="StandardMaterial3D" id="s21"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+roughness = 1.0
+emission_enabled = true
+emission = Color(0.1, 0.9, 0.2, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="BoxShape3D" id="s22"]
+size = Vector3(2.8, 2.4, 2.4)
+
+[sub_resource type="StandardMaterial3D" id="s23"]
+albedo_color = Color(0.95, 0.9, 0.7, 1)
+roughness = 1.0
+emission_enabled = true
+emission = Color(1, 0.85, 0.5, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxShape3D" id="s24"]
+size = Vector3(2.8, 2, 2.8)
+
+[sub_resource type="BoxShape3D" id="s25"]
+size = Vector3(1.8, 2, 3.4)
+
+[node name="Nivel1Recepcion" type="Node3D"]
+script = ExtResource("e1")
+mensaje_inicial = "Despiertas encerrado en la recepción.\nLa puerta de salida tiene un candado digital.\nBusca la forma de conseguir el código."
+
+[node name="Geometria" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("s1")
+
+[node name="Piso" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 use_collision = true
-size = Vector3(10, 0.2, 10)
+size = Vector3(18.3, 0.2, 14.3)
+material = ExtResource("e2")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=844323013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+[node name="Techo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
 use_collision = true
-size = Vector3(10, 3, 0.2)
+size = Vector3(18.3, 0.2, 14.3)
+material = ExtResource("e3")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=862737931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+[node name="MuroNorte" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, 1.5, -7)
 use_collision = true
-size = Vector3(10, 3, 0.2)
+size = Vector3(13.45, 3, 0.3)
+material = ExtResource("e4")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1662826066]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, 0)
+[node name="MuroNorte2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.425, 1.5, -7)
 use_collision = true
-size = Vector3(0.2, 3, 10)
+size = Vector3(3.45, 3, 0.3)
+material = ExtResource("e4")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=884932238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, 0)
+[node name="MuroNorte_dintel" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.65, -7)
 use_collision = true
-size = Vector3(0.2, 3, 10)
+size = Vector3(1.4, 0.7, 0.3)
+material = ExtResource("e4")
 
-[node name="Puerta_Sotano_Visual" type="CSGBox3D" parent="." unique_id=330794148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -4.9)
+[node name="MuroSur" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.475, 1.5, 7)
 use_collision = true
-size = Vector3(1.2, 2.2, 0.3)
+size = Vector3(5.35, 3, 0.3)
+material = ExtResource("e4")
 
-[node name="Area3D" type="Area3D" parent="Puerta_Sotano_Visual" unique_id=898851154 node_paths=PackedStringArray("puerta_visual")]
-script = ExtResource("1_hs1xt")
+[node name="MuroSur2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.475, 1.5, 7)
+use_collision = true
+size = Vector3(11.35, 3, 0.3)
+material = ExtResource("e4")
+
+[node name="MuroSur_dintel" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.65, 7)
+use_collision = true
+size = Vector3(1.6, 0.7, 0.3)
+material = ExtResource("e4")
+
+[node name="MuroOeste" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.5, 0)
+use_collision = true
+size = Vector3(0.3, 3, 14.3)
+material = ExtResource("e4")
+
+[node name="MuroEste" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, 0)
+use_collision = true
+size = Vector3(0.3, 3, 14.3)
+material = ExtResource("e4")
+
+[node name="NichoLado" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 1.5, -8.3)
+use_collision = true
+size = Vector3(0.3, 3, 2.9)
+material = ExtResource("e5")
+
+[node name="NichoLado2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 1.5, -8.3)
+use_collision = true
+size = Vector3(0.3, 3, 2.9)
+material = ExtResource("e5")
+
+[node name="NichoFondo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -9.6)
+use_collision = true
+size = Vector3(2.1, 3, 0.3)
+material = ExtResource("e5")
+
+[node name="NichoTecho" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.1, -8.3)
+size = Vector3(2, 0.2, 3)
+material = ExtResource("e3")
+
+[node name="Escalon" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.45, -7.5)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Escalon2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.8, -7.85)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Escalon3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.15, -8.2)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Escalon4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.5, -8.55)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Escalon5" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1.85, -8.9)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Escalon6" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -2.2, -9.25)
+use_collision = true
+size = Vector3(1.5, 0.2, 0.4)
+material = ExtResource("e5")
+
+[node name="Mostrador" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.55, -4.8)
+use_collision = true
+size = Vector3(5.2, 1.1, 0.9)
+material = ExtResource("e6")
+
+[node name="MostradorTapa" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.135, -4.8)
+use_collision = true
+size = Vector3(5.4, 0.07, 1.1)
+material = ExtResource("e7")
+
+[node name="MostradorCampana" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.27, -4.8)
+size = Vector3(0.25, 0.2, 0.25)
+material = ExtResource("e8")
+
+[node name="EstantePared" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, -6.65)
+size = Vector3(4.6, 0.05, 0.35)
+material = ExtResource("e6")
+
+[node name="EstantePared2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.6, -6.65)
+size = Vector3(4.6, 0.05, 0.35)
+material = ExtResource("e6")
+
+[node name="EstantePared3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.2, -6.65)
+size = Vector3(4.6, 0.05, 0.35)
+material = ExtResource("e6")
+
+[node name="Carpeta" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s2")
+
+[node name="Carpeta2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s3")
+
+[node name="Carpeta3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s4")
+
+[node name="Carpeta4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s5")
+
+[node name="Carpeta5" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s6")
+
+[node name="Carpeta6" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s7")
+
+[node name="Carpeta7" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s8")
+
+[node name="Carpeta8" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.2, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s9")
+
+[node name="Carpeta9" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s2")
+
+[node name="Carpeta10" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s3")
+
+[node name="Carpeta11" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s4")
+
+[node name="Carpeta12" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s5")
+
+[node name="Carpeta13" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s6")
+
+[node name="Carpeta14" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s7")
+
+[node name="Carpeta15" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s8")
+
+[node name="Carpeta16" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.8, -6.65)
+size = Vector3(0.12, 0.3, 0.25)
+material = SubResource("s9")
+
+[node name="SillaPata" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.21, -5.9)
+use_collision = true
+size = Vector3(0.1, 0.42, 0.1)
+material = ExtResource("e7")
+
+[node name="SillaAsiento" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.46, -5.9)
+use_collision = true
+size = Vector3(0.5, 0.08, 0.5)
+material = ExtResource("e9")
+
+[node name="SillaRespaldo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.82, -6.14)
+size = Vector3(0.5, 0.62, 0.07)
+material = ExtResource("e9")
+
+[node name="Archivador" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 0.75, -2)
+use_collision = true
+size = Vector3(0.7, 1.5, 0.9)
+material = ExtResource("e8")
+
+[node name="Cajon" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.3, -2)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.75, -2)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 1.2, -2)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Archivador2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 0.85, -1)
+use_collision = true
+size = Vector3(0.7, 1.7, 0.9)
+material = ExtResource("e8")
+
+[node name="Cajon4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.3, -1)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon5" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.75, -1)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon6" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 1.2, -1)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Archivador3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 0.75, 0)
+use_collision = true
+size = Vector3(0.7, 1.5, 0.9)
+material = ExtResource("e8")
+
+[node name="Cajon7" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.3, 0)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon8" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 0.75, 0)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="Cajon9" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04, 1.2, 0)
+size = Vector3(0.03, 0.38, 0.8)
+material = SubResource("s10")
+
+[node name="CajaSobreArchivador" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 1.85, -1)
+size = Vector3(0.5, 0.3, 0.5)
+material = ExtResource("e10")
+
+[node name="EscritorioTapa" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.78, 3.5)
+use_collision = true
+size = Vector3(1.9, 0.08, 0.9)
+material = ExtResource("e6")
+
+[node name="EscritorioLado" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0.37, 3.5)
+use_collision = true
+size = Vector3(0.08, 0.74, 0.8)
+material = ExtResource("e6")
+
+[node name="EscritorioLado2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0.37, 3.5)
+use_collision = true
+size = Vector3(0.08, 0.74, 0.8)
+material = ExtResource("e6")
+
+[node name="EscritorioFondo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.4, 3.1)
+size = Vector3(1.8, 0.6, 0.05)
+material = ExtResource("e6")
+
+[node name="SillaPata2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.21, 4.6)
+use_collision = true
+size = Vector3(0.1, 0.42, 0.1)
+material = ExtResource("e7")
+
+[node name="SillaAsiento2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.46, 4.6)
+use_collision = true
+size = Vector3(0.5, 0.08, 0.5)
+material = ExtResource("e9")
+
+[node name="SillaRespaldo2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.82, 4.84)
+size = Vector3(0.5, 0.62, 0.07)
+material = ExtResource("e9")
+
+[node name="Papeles" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0.83, 3.45)
+size = Vector3(0.4, 0.02, 0.3)
+material = SubResource("s11")
+
+[node name="LamparaBase" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0.84, 3.35)
+size = Vector3(0.22, 0.04, 0.22)
+material = ExtResource("e7")
+
+[node name="LamparaTallo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.01, 3.35)
+size = Vector3(0.04, 0.3, 0.04)
+material = ExtResource("e7")
+
+[node name="LamparaPantalla" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 1.2, 3.3)
+size = Vector3(0.28, 0.12, 0.26)
+material = SubResource("s12")
+
+[node name="LuzEscritorio" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 3.2)
+script = ExtResource("e11")
+light_color = Color(1, 0.78, 0.45, 1)
+light_energy = 1.6
+omni_range = 5.5
+parpadea = true
+
+[node name="SofaBase" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.21, -3)
+use_collision = true
+size = Vector3(0.95, 0.42, 2.3)
+material = ExtResource("e9")
+
+[node name="SofaRespaldo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55, 0.695, -3)
+use_collision = true
+size = Vector3(0.25, 0.55, 2.3)
+material = ExtResource("e9")
+
+[node name="SofaBrazo" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.57, -4.05)
+use_collision = true
+size = Vector3(0.95, 0.3, 0.22)
+material = ExtResource("e9")
+
+[node name="SofaBrazo2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.57, -1.95)
+use_collision = true
+size = Vector3(0.95, 0.3, 0.22)
+material = ExtResource("e9")
+
+[node name="MesaBaja" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0.2, -3)
+use_collision = true
+size = Vector3(0.7, 0.4, 1.2)
+material = ExtResource("e6")
+
+[node name="Revistas" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0.415, -3.2)
+size = Vector3(0.3, 0.03, 0.22)
+material = SubResource("s13")
+
+[node name="BancaAsiento" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.46, 6.5)
+use_collision = true
+size = Vector3(2.6, 0.08, 0.5)
+material = ExtResource("e6")
+
+[node name="BancaPata" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0.21, 6.5)
+use_collision = true
+size = Vector3(0.08, 0.42, 0.4)
+material = ExtResource("e6")
+
+[node name="BancaPata2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 0.21, 6.5)
+use_collision = true
+size = Vector3(0.08, 0.42, 0.4)
+material = ExtResource("e6")
+
+[node name="BancaAsiento2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 0.46, 6.5)
+use_collision = true
+size = Vector3(2, 0.08, 0.5)
+material = ExtResource("e6")
+
+[node name="BancaPata3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 0.21, 6.5)
+use_collision = true
+size = Vector3(0.08, 0.42, 0.4)
+material = ExtResource("e6")
+
+[node name="BancaPata4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.21, 6.5)
+use_collision = true
+size = Vector3(0.08, 0.42, 0.4)
+material = ExtResource("e6")
+
+[node name="Alfombra" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.5)
+size = Vector3(5, 0.02, 3.4)
+material = ExtResource("e9")
+
+[node name="Maceta" type="CSGCylinder3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2, 0.225, 5.8)
+use_collision = true
+radius = 0.28
+height = 0.45
+sides = 8
+material = ExtResource("e10")
+
+[node name="Planta" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2, 0.8, 5.8)
+size = Vector3(0.45, 0.7, 0.45)
+material = SubResource("s14")
+
+[node name="Maceta2" type="CSGCylinder3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0.225, 0)
+use_collision = true
+radius = 0.28
+height = 0.45
+sides = 8
+material = ExtResource("e10")
+
+[node name="Planta2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 0.8, 0)
+size = Vector3(0.45, 0.7, 0.45)
+material = SubResource("s14")
+
+[node name="CajaCarton" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2, 0.4, -6.3)
+use_collision = true
+size = Vector3(0.8, 0.8, 0.8)
+material = ExtResource("e10")
+
+[node name="CajaCarton2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0.3, -6.4)
+use_collision = true
+size = Vector3(0.6, 0.6, 0.6)
+material = ExtResource("e10")
+
+[node name="CajaCarton3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2, 1.075, -6.3)
+use_collision = true
+size = Vector3(0.55, 0.55, 0.55)
+material = ExtResource("e10")
+
+[node name="Columna" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 2)
+use_collision = true
+size = Vector3(0.6, 3, 0.6)
+material = ExtResource("e4")
+
+[node name="Columna2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 1)
+use_collision = true
+size = Vector3(0.6, 3, 0.6)
+material = ExtResource("e4")
+
+[node name="CuadroMarco" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.9, -6.8)
+size = Vector3(1, 0.7, 0.05)
+material = SubResource("s15")
+
+[node name="Cuadro" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.9, -6.78)
+size = Vector3(0.88, 0.58, 0.05)
+material = SubResource("s16")
+
+[node name="CuadroMarco2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.9, -6.8)
+size = Vector3(0.6, 0.8, 0.05)
+material = SubResource("s15")
+
+[node name="Cuadro2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.9, -6.78)
+size = Vector3(0.48, 0.68, 0.05)
+material = SubResource("s17")
+
+[node name="CuadroMarco3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.82, 1.9, 3)
+size = Vector3(0.05, 0.8, 1.2)
+material = SubResource("s15")
+
+[node name="Cuadro3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8, 1.9, 3)
+size = Vector3(0.05, 0.68, 1.08)
+material = SubResource("s18")
+
+[node name="CuadroMarco4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82, 1.9, 4)
+size = Vector3(0.05, 0.7, 0.9)
+material = SubResource("s15")
+
+[node name="Cuadro4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 1.9, 4)
+size = Vector3(0.05, 0.58, 0.78)
+material = SubResource("s19")
+
+[node name="Puerta_Sotano_Visual" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.1, -7)
+use_collision = true
+size = Vector3(1.4, 2.2, 0.26)
+material = ExtResource("e6")
+
+[node name="PuertaManija" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45, 1.03, -6.82)
+size = Vector3(0.06, 0.06, 0.1)
+material = ExtResource("e8")
+
+[node name="Area3D" type="Area3D" parent="Geometria/Puerta_Sotano_Visual" node_paths=PackedStringArray("puerta_visual")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)
+script = ExtResource("e12")
 puerta_visual = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta_Sotano_Visual/Area3D" unique_id=1130610805]
-shape = SubResource("BoxShape3D_0in4i")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometria/Puerta_Sotano_Visual/Area3D"]
+shape = SubResource("s20")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909118104]
-transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
-light_energy = 0.15
+[node name="Puerta_Salida_Visual" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1, 7)
+use_collision = true
+size = Vector3(1.5, 2.2, 0.28)
+material = ExtResource("e8")
 
-[node name="Player" parent="." unique_id=1552797537 instance=ExtResource("2_hs1xt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="PuertaRemache" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.325, 6.84)
+size = Vector3(1.3, 0.05, 0.05)
+material = ExtResource("e7")
 
-[node name="CanvasLayer" parent="." unique_id=1388581311 instance=ExtResource("3_hs1xt")]
+[node name="PuertaRemache2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.125, 6.84)
+size = Vector3(1.3, 0.05, 0.05)
+material = ExtResource("e7")
 
-[node name="Interactuable_Escritorio" type="Area3D" parent="." unique_id=1331223413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3)
-script = ExtResource("3_akuw8")
+[node name="PuertaRemache3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.925, 6.84)
+size = Vector3(1.3, 0.05, 0.05)
+material = ExtResource("e7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Escritorio" unique_id=1899609440]
-shape = SubResource("BoxShape3D_smhyf")
+[node name="Teclado_Visual" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 1.3, 6.82)
+size = Vector3(0.28, 0.4, 0.1)
+material = SubResource("s21")
 
-[node name="Interactuable_Archivador" type="Area3D" parent="." unique_id=1495168767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -2)
-script = ExtResource("3_akuw8")
+[node name="Puerta_Salida" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1, 5.7)
+script = ExtResource("e13")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Archivador" unique_id=2117777557]
-shape = SubResource("BoxShape3D_smhyf")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta_Salida"]
+shape = SubResource("s22")
+
+[node name="Foco" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94, 0)
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("s23")
+
+[node name="Luz" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+script = ExtResource("e11")
+light_color = Color(1, 0.82, 0.55, 1)
+light_energy = 1.5
+omni_range = 8
+parpadea = true
+
+[node name="Foco2" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.94, 3.5)
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("s23")
+
+[node name="Luz2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 3.5)
+script = ExtResource("e11")
+light_color = Color(1, 0.82, 0.55, 1)
+light_energy = 1.3
+omni_range = 8
+
+[node name="Foco3" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.94, -3)
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("s23")
+
+[node name="Luz3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.5, -3)
+script = ExtResource("e11")
+light_color = Color(1, 0.82, 0.55, 1)
+light_energy = 1.3
+omni_range = 8
+
+[node name="Foco4" type="CSGBox3D" parent="Geometria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.94, -2.5)
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("s23")
+
+[node name="Luz4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, -2.5)
+script = ExtResource("e11")
+light_color = Color(1, 0.82, 0.55, 1)
+light_energy = 1.3
+omni_range = 8
+
+[node name="Player" parent="." instance=ExtResource("e14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.5)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("e15")]
+
+[node name="Interactuable_Escritorio" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 3.5)
+script = ExtResource("e16")
+da_llave = false
+prompt = "Presiona E para leer la nota del escritorio"
+texto_nota = "Nota de un antiguo guardia:\n\nLos primeros dos dígitos de la puerta de salida están guardados en la caja fuerte del sótano.\nLa llave del sótano está en el archivador."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Escritorio"]
+shape = SubResource("s24")
+
+[node name="Interactuable_Archivador" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 1, -1)
+script = ExtResource("e16")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactuable_Archivador"]
+shape = SubResource("s25")
